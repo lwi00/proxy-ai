@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Custom styles for toggle switches */
+.toggle-checkbox {
+  right: 0;
+  z-index: 10;
+  transition: transform 0.3s ease-in-out;
+}
+
+.toggle-checkbox:checked {
+  transform: translateX(100%);
+  border-color: #0369a1;
+}
+
+.toggle-label {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Custom select styling for AI models */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a0aec0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1em;
+}
+
+optgroup {
+  font-weight: 600;
+  color: #a0aec0;
+}
+
+option {
+  font-weight: normal;
+  color: white;
+}
+
+/* Custom scrollbar styles */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 10px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.5);
+  border-radius: 10px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.8);
+}
+
+/* Additional utility classes */
+.bg-success {
+  background-color: rgba(34, 197, 94, 0.9);
+}
+
+.bg-danger {
+  background-color: rgba(239, 68, 68, 0.9);
+}
+
+.bg-warning {
+  background-color: rgba(234, 179, 8, 0.9);
+}
+
+.bg-info {
+  background-color: rgba(6, 182, 212, 0.9);
+}
+
+.bg-accent {
+  background-color: rgba(3, 105, 161, 0.9);
+}
+
+.bg-accent-hover {
+  background-color: rgba(3, 105, 161, 1);
+}
+
+.bg-primary {
+  background-color: rgba(15, 23, 42, 1);
+}
+
+.bg-primary-light {
+  background-color: rgba(30, 41, 59, 0.5);
+}
+
+.bg-secondary {
+  background-color: rgba(15, 23, 42, 0.7);
+}
+
+.bg-secondary-light {
+  background-color: rgba(30, 41, 59, 0.3);
+}
+
+.text-accent {
+  color: rgba(56, 189, 248, 1);
+}
+
+.text-accent-hover {
+  color: rgba(14, 165, 233, 1);
+}
+
+.border-secondary {
+  border-color: rgba(51, 65, 85, 0.5);
+}
