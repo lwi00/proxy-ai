@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
+import { enhanceAllMarketReports } from "./mistralService";
 
 // Define the analysis request schema
 const analysisRequestSchema = z.object({
@@ -92,11 +93,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Store the analysis results
       // In a real app, this would be stored in a database for future reference
       
-      // Return the analysis results
-      res.json({
+      // Create analysis results object
+      const analysisResponse = {
         reports,
         timestamp: new Date().toISOString(),
-      });
+      };
+      
+      // Enhance the analysis with Mistral AI
+      try {
+        const enhancedResponse = await enhanceAllMarketReports(analysisResponse);
+        res.json(enhancedResponse);
+      } catch (aiError) {
+        console.error("Error enhancing analysis with Mistral AI:", aiError);
+        // Fall back to original analysis if AI enhancement fails
+        res.json(analysisResponse);
+      }
 
     } catch (error) {
       if (error instanceof z.ZodError) {
